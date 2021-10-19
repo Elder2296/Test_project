@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Catalogos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Catalogos" FromRole="Catalogos" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idState" Type="Int32" />
+    <Property Name="edad" Type="Int32" />
+    <NavigationProperty Name="Catalogos" Relationship="Self.FK_User_Catalogos" FromRole="User" ToRole="Catalogos" />
+  </EntityType>
+  <Association Name="FK_User_Catalogos">
+    <End Role="Catalogos" Type="Self.Catalogos" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="idState" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TestProjectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Catalogos" EntityType="Self.Catalogos" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK_User_Catalogos" Association="Self.FK_User_Catalogos">
+      <End Role="Catalogos" EntitySet="Catalogos" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

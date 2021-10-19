@@ -1,0 +1,98 @@
+﻿@model TestProject.Models.ViewModels.UserRegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@using (Html.BeginForm("Register", "Login", FormMethod.Post))
+{
+
+    <div class="container well">
+        <div class="contenedor ">
+            <div class="espacio2 ">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <h2 class="text-white"> Register</h2>
+
+                    </div>
+
+
+
+                </div>
+                <style>
+                    .blanco {
+                        color: white;
+                    }
+                </style>
+                <div class="form-group row">
+                    @*@Html.LabelFor(d => d.nombre,"",new {@class="col-sm-3 col-form-label text-white"})*@
+                    <label class="col-sm-3 col-form-label text-white">Email:</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(d => d.email, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.email, null, new { @class = "blanco" })
+                        @*<input type="text" class="form-control" />*@
+
+                    </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    @*@Html.LabelFor(d => d.nombre,"",new {@class="col-sm-3 col-form-label text-white"})*@
+                    <label class="col-sm-3 col-form-label text-white">Age:</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(d => d.age, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.email, null, new { @class = "blanco" })
+                        @*<input type="text" class="form-control" />*@
+
+                    </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    @*@Html.LabelFor(d => d.nombre,"",new {@class="col-sm-3 col-form-label text-white"})*@
+                    <label class="col-sm-3 col-form-label text-white">Pass:</label>
+                    <div class="col-sm-9">
+                        @Html.PasswordFor(d => d.password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.password, null, new { @class = "blanco" })
+                        <span class="input-group-btn">
+                            <button id="verPassword" class="btn btn-default" type="button">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </button>
+                        </span>
+
+                        @*<input type="password" class="form-control" /*@>
+
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    @*@Html.LabelFor(d => d.nombre,"",new {@class="col-sm-3 col-form-label text-white"})*@
+                    <label class="col-sm-3 col-form-label text-white">Confirm pass:</label>
+                    <div class="col-sm-9">
+                        @Html.PasswordFor(d => d.confirmpass, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.confirmpass, null, new { @class = "blanco" })
+                        <span class="input-group-btn">
+                            <button id="verPassword" class="btn btn-default" type="button">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </button>
+                        </span>
+
+                        @*<input type="password" class="form-control" /*@>
+
+                    </div>
+
+                </div>
+                <br />
+                <div class="form-group row">
+
+                    <button value="Ingresar" type="submit" class="form-control btn btn-primary">Ingresar</button>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+}

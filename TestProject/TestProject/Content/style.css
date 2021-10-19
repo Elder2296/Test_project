@@ -1,0 +1,22 @@
+﻿.variable {
+    height: 100vh;
+}
+
+.variable {
+    background-image: url('../im0g/abstract.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: aquamarine;
+}
+.espacio2 {
+    position:relative;
+   width:30%;
+   margin-right:auto;
+   margin-left:auto;
+   align-content:center;
+   top:50%;
+   transform:translateY(50%);
+    
+}
